@@ -1,0 +1,1 @@
+This is a script intended to claim daily rewards from Genshin Impact, Honkai Star Rail, and Zenless Zone Zero using Python and Selenium libraries.
