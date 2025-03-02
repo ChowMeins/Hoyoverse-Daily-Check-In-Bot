@@ -1,6 +1,6 @@
 # **HoyoVerse Game Daily Rewards Claimer**
 
-This project automates claiming rewards from daily check-ins for Genshin Impact, Honkai: Star Rail, and Zenless Zone Zero
+This project automates claiming rewards from daily check-ins for **Genshin Impact**, **Honkai: Star Rail**, and **Zenless Zone Zero**
 
 ## Prerequisites
 
