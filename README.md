@@ -8,7 +8,7 @@ Ensure you have the following installed:
 
 - ## **Python** (developed using Python 3.10.11)
 - ## Installation of both the Selenium library and Python dotenv.
-    - run the follwing while in the root directory:
+    - run the following while in the root directory:
     ```
     pip install -r requirements.txt
     ```
@@ -32,7 +32,7 @@ This project requires a `.env` file to be able to login to the HoyoLab website.
    ```
 
 ## Execution
-Once setup, run the Python script.
+Once setup, run the Python script while in the src folder.
 ``` 
 python claim.py 
 ```
