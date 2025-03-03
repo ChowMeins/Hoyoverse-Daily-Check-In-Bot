@@ -35,7 +35,7 @@ def main():
         level=logging.ERROR,
         format="%(asctime)s - %(levelname)s - %(message)s"
     )
-    service = Service(executable_path='chromedriver.exe')
+    service = Service(executable_path='chromedriver.exe') # Change executable path to the name of the chromedriver installed
     driver = webdriver.Chrome(service=service)
     userCredentials = loadEnvVariables()
 
