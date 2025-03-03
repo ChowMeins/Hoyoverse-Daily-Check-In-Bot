@@ -18,7 +18,7 @@ Ensure you have the following installed:
     - Once installed, place the chromedriver.exe file into the src folder
       - **You may have to change line 39 of the Python file to make the executable path match the file name of the chromedriver installed**
       ```
-      service = Service(executable_path='chromedriver.exe')
+      service = Service(executable_path='{Insert the chromedriver file name here')
       ```
 
 ## Configuration
