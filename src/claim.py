@@ -35,7 +35,11 @@ def main():
         level=logging.ERROR,
         format="%(asctime)s - %(levelname)s - %(message)s"
     )
+<<<<<<< HEAD
     service = Service(executable_path='chromedriver.exe') # Change executable path to the name of the chromedriver installed
+=======
+    service = Service(executable_path='chromedriver')
+>>>>>>> 0df5d9e (Increased timeout for logging in. Fixed bug for closing recommendation popup window)
     driver = webdriver.Chrome(service=service)
     userCredentials = loadEnvVariables()
 
@@ -44,7 +48,7 @@ def main():
     driver.get(hoyolab_website)
     actions = ActionChains(driver)
     try:
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, 'hyv-account-frame')))
+        WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, 'hyv-account-frame')))
         loginFrame = driver.find_element(By.ID, 'hyv-account-frame')
         driver.switch_to.frame(loginFrame)
     except:
@@ -53,13 +57,13 @@ def main():
     # Switch to the iFrame containing the login modal
     print('Hoyoverse Login Frame Found.')
 
-    try:
     # Enter user information to login
-        email = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div[1]/form/div[3]/div[1]/input')
+    try:
+        email = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/div/form/div[3]/div[1]/input')
         email.send_keys(userCredentials[0])
-        password = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div[1]/form/div[4]/div[1]/input')
+        password = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/div/form/div[4]/div[1]/input')
         password.send_keys(userCredentials[1])
-        loginButton = driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div[2]/div[1]/form/button')
+        loginButton = driver.find_element(By.XPATH, '/html/body/div[3]/div/div/div[2]/div/form/button')
         loginButton.click()
         driver.switch_to.default_content()
     except:
@@ -124,8 +128,8 @@ def main():
 
     # Close reminder popup
     try:
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[4]/div/div/span')))
-        closeButton = driver.find_element(By.XPATH, '/html/body/div[4]/div/div/span')
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div/div/span')))
+        closeButton = driver.find_element(By.XPATH, '/html/body/div[5]/div/div/span')
         closeButton.click()
     except:
         logging.error("GI: Error trying to find the number of daily rewards claimed.")
@@ -146,7 +150,7 @@ def main():
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, f"//*[contains(text(), 'Day {daysClaimed}')]")))
             dailyReward = driver.find_element(By.XPATH, f"//*[contains(text(), 'Day {daysClaimed}')]")
             dailyReward.click()
-            time.sleep(2)
+            time.sleep(5)
         except:
             logging.error(f"GI: Day {daysClaimed} not found. Failed to claim reward.")
             save_page_source(driver)
@@ -195,8 +199,8 @@ def main():
     time.sleep(2)
     # Close reminder popup on daily check-in website
     try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[2]/div[2]/div[2]/div')))
-        closeButton = driver.find_element(By.XPATH, '/html/body/div[2]/div[2]/div[2]/div')
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')))
+        closeButton = driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')
         closeButton.click()
     except:
         logging.error("HSR: Reminder pop-up not found.")
@@ -215,7 +219,7 @@ def main():
         try:
             dailyReward = driver.find_element(By.XPATH, f"//*[text() = 'Day {daysClaimed}']")
             dailyReward.click()
-            time.sleep(3)
+            time.sleep(5)
         except:
             logging.error("HSR: Rewards not claimed.")
             save_page_source(driver)        
@@ -262,8 +266,8 @@ def main():
         save_page_source(driver)   
     
     try:
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[2]/div[2]/div[2]/div')))
-        closeButton = driver.find_element(By.XPATH, '/html/body/div[2]/div[2]/div[2]/div')
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')))
+        closeButton = driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')
         closeButton.click()
     except:
         logging.error("ZZZ: Recommendation pop-up not.")
@@ -282,7 +286,7 @@ def main():
         try:    
             dailyReward = driver.find_element(By.XPATH, f"//*[text() = 'Day {daysClaimed}']")
             dailyReward.click()
-            time.sleep(3)
+            time.sleep(5)
         except:
             logging.error("ZZZ: Rewards not claimed.")
             save_page_source(driver)
