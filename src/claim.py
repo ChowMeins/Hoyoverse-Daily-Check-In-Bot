@@ -35,11 +35,8 @@ def main():
         level=logging.ERROR,
         format="%(asctime)s - %(levelname)s - %(message)s"
     )
-<<<<<<< HEAD
     service = Service(executable_path='chromedriver.exe') # Change executable path to the name of the chromedriver installed
-=======
     service = Service(executable_path='chromedriver')
->>>>>>> 0df5d9e (Increased timeout for logging in. Fixed bug for closing recommendation popup window)
     driver = webdriver.Chrome(service=service)
     userCredentials = loadEnvVariables()
 
