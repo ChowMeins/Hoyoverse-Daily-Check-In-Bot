@@ -43,7 +43,7 @@ def main():
     hoyolab_website = 'https://www.hoyolab.com/home'
     driver.get(hoyolab_website)
     actions = ActionChains(driver)
-    try:
+    try: # Application will timeout after 60 seconds.
         WebDriverWait(driver, 60).until(EC.visibility_of_element_located((By.ID, 'hyv-account-frame')))
         loginFrame = driver.find_element(By.ID, 'hyv-account-frame')
         driver.switch_to.frame(loginFrame)
