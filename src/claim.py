@@ -146,6 +146,7 @@ def main():
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, f"//*[contains(text(), 'Day {daysClaimed}')]")))
             dailyReward = driver.find_element(By.XPATH, f"//*[contains(text(), 'Day {daysClaimed}')]")
             dailyReward.click()
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[6]/div[2]/div[2]/div')))
             time.sleep(5)
         except:
             logging.error(f"GI: Day {daysClaimed} not found. Failed to claim reward.")
@@ -215,6 +216,7 @@ def main():
         try:
             dailyReward = driver.find_element(By.XPATH, f"//*[text() = 'Day {daysClaimed}']")
             dailyReward.click()
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[2]/div[2]/div')))
             time.sleep(5)
         except:
             logging.error("HSR: Rewards not claimed.")
@@ -244,6 +246,7 @@ def main():
         logging.error("ZZZ: Error trying to find ZZZ under interest tab.")
         save_page_source(driver)  
 
+    # Open ZZZ Check-In
     try:
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div/div[2]/div/div')))
         zzzCheckIn = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div/div[2]/div/div')
@@ -252,6 +255,7 @@ def main():
         logging.error("ZZZ: Daily Check-In not found.")
         save_page_source(driver)  
 
+    # Switch driver window to check-in
     try:
         WebDriverWait(driver, 10).until(lambda d: len(d.window_handles) > 1)
         driver.switch_to.window(driver.window_handles[-1])
@@ -261,6 +265,7 @@ def main():
         logging.error("ZZZ: Daily Check-In never opened.")
         save_page_source(driver)   
     
+    # Close recommendation popup
     try:
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')))
         closeButton = driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div[2]/div')
@@ -269,6 +274,7 @@ def main():
         logging.error("ZZZ: Recommendation pop-up not.")
         save_page_source(driver)  
 
+    # Look for amount of days claimed text
     daysClaimed = None
     try:
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/div[2]/div[1]/div[4]/div/div[1]/div[1]/p[1]/span')))
@@ -278,10 +284,12 @@ def main():
         logging.error("ZZZ: Days claimed not found.")
         save_page_source(driver)
 
+    # Claim rewards
     if daysClaimed != None:
         try:    
             dailyReward = driver.find_element(By.XPATH, f"//*[text() = 'Day {daysClaimed}']")
             dailyReward.click()
+            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[5]/div[2]/div[2]/div')))
             time.sleep(5)
         except:
             logging.error("ZZZ: Rewards not claimed.")
