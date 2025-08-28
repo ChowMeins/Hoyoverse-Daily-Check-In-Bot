@@ -1,0 +1,10 @@
+services:
+  hyv-checkin-app:
+    build: .
+    volumes:
+      # Mount your src directory so changes are reflected immediately
+      - ./src:/src
+      # Optionally mount requirements.txt if you plan to modify it
+      - ./requirements.txt:/src/requirements.txt
+      # Load .env file
+      - ./.env:/src/.env
