@@ -1,43 +1,47 @@
-# **HoyoVerse Game Daily Rewards Claimer**
+# HoyoVerse Game Daily Rewards Claimer (Playwright + Docker)
 
-This project automates claiming rewards from daily check-ins for **Genshin Impact**, **Honkai: Star Rail**, and **Zenless Zone Zero**
+This is the updated version of the project that automates claiming daily rewards for 
+**Genshin Impact**, **Honkai: Star Rail**, and **Zenless Zone Zero** using **Playwright** 
+and **Docker**.  
+
+> ⚠️ Legacy Selenium version is available on the `selenium-legacy` branch.
+
+---
 
 ## Prerequisites
 
 Ensure you have the following installed:
 
-- ## **Python** (developed using Python 3.10.11)
-- ## Installation of both the Selenium library and Python dotenv.
-    - run the following while in the root directory:
-    ```
-    pip install -r requirements.txt
-    ```
-- ## Installation of a chromedriver
-    - Go to the following website to install a chromedriver for your system.
-    - https://googlechromelabs.github.io/chrome-for-testing/
-    - Once installed, place the chromedriver.exe file into the src folder
-      - **You may have to change line 39 of the Python file to make the executable path match the file name of the chromedriver installed**
-      ```
-      service = Service(executable_path='{Insert the chromedriver file name here')
-      ```
+- **Python 3.10 or higher**  
+- **Playwright** and **Python dotenv**  
+  Install dependencies while in the root directory:
+  ```sh
+  pip install -r requirements.txt
 
 ## Configuration
 
-This project requires a `.env` file to be able to login to the HoyoLab website.  
+This project requires a .env file to log in to the HoyoLab website.
 
-### Creating the `.env` File  
+In the project's root directory, create a file named .env.
 
-1. In the project's root directory, create a file named `.env`.
-2. Add the following content, replacing the placeholders with your actual credentials:
+Add the following content, replacing the placeholders with your actual credentials:
 
-   ```
-   HYV_EMAIL=your_email@example.com
-   HYV_PASSWORD=your_password
-   ```
+HYV_EMAIL="your_email@example.com"
+HYV_PASSWORD="your_password"
 
 ## Execution
-Once setup, run the Python script while in the src folder.
-``` 
-python claim.py 
-```
 
+Running the Python Script Directly
+
+Once setup, run the Python script while in the src folder:
+
+python checkin.py
+
+Running with Docker (Optional)
+
+Build and start the container:
+
+docker compose up --build
+
+
+The script will execute inside the container automatically.
