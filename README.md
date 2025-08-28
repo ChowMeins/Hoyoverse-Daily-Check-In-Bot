@@ -1,5 +1,8 @@
 # **HoyoVerse Game Daily Rewards Claimer**
 
+> **Disclaimer:** This is the legacy version of the project written using Selenium. 
+> For the latest version with Playwright and Docker, please check the `main` branch.
+
 This project automates claiming rewards from daily check-ins for **Genshin Impact**, **Honkai: Star Rail**, and **Zenless Zone Zero**
 
 ## Prerequisites
