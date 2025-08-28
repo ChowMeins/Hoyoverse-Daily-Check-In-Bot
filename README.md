@@ -26,8 +26,11 @@ In the project's root directory, create a file named .env.
 
 Add the following content, replacing the placeholders with your actual credentials:
 
+**`.env` file**
+```
 HYV_EMAIL="your_email@example.com"
 HYV_PASSWORD="your_password"
+```
 
 ## Execution
 
@@ -35,13 +38,13 @@ Running the Python Script Directly
 
 Once setup, run the Python script while in the src folder:
 
-python checkin.py
+`python checkin.py`
 
 Running with Docker (Optional)
 
 Build and start the container:
 
-docker compose up --build
+`docker compose up --build`
 
 
 The script will execute inside the container automatically.
