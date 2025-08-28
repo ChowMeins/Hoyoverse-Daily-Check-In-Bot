@@ -8,7 +8,7 @@ def main():
     load_dotenv()
     with sync_playwright() as p:
         try:
-            browser = p.chromium.launch(headless=False)  # headless=False shows the browser
+            browser = p.chromium.launch(headless=True)  # headless=False shows the browser
             page = browser.new_page()
             page.goto("https://www.hoyolab.com/home")
         except Exception as e:
