@@ -4,7 +4,7 @@ This is the updated version of the project that automates claiming daily rewards
 **Genshin Impact**, **Honkai: Star Rail**, and **Zenless Zone Zero** using **Playwright** 
 and **Docker**.  
 
-> ⚠️ Legacy Selenium version is available on the `selenium-legacy` branch.
+> ⚠️ A Selenium version is available on the `selenium-legacy` branch.
 
 ---
 
