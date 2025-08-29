@@ -1,7 +1,7 @@
 services:
   hyv-checkin-app:
     build: .
-    container-name: hyv-checkin-app
+    container_name: hyv-checkin-app
     volumes:
       # Mount your src directory so changes are reflected immediately
       - ./src:/src
