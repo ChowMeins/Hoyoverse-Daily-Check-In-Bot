@@ -9,3 +9,5 @@ services:
       - ./requirements.txt:/src/requirements.txt
       # Load .env file
       - ./.env:/src/.env
+    logging:
+      driver: "none"
