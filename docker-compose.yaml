@@ -10,4 +10,7 @@ services:
       # Load .env file
       - ./.env:/src/.env
     logging:
-      driver: "none"
+      driver: "json-file" 
+      options:
+        max-size: "10m"
+        max-file: "3"
