@@ -131,7 +131,7 @@ def main():
             day_span.wait_for(state="visible")
             day_count = int(day_span.text_content()) + 1
 
-            print(f"Looking for Day {day_count} rewards...")
+            print(f"Looking for Genshin Day {day_count} rewards...")
         except Exception as e:
             print(f"Failed to get Genshin day count: {e}")
             time.sleep(600)
@@ -286,6 +286,7 @@ def main():
 
         # Claim ZZZ rewards
         try:
+            print(f"Looking for ZZZ Day {day_count} rewards...")
             rewards_button = zzz_checkin_page.locator("div[class*='item']").get_by_text(f"Day {day_count}", exact=True)
             rewards_button.wait_for(state="visible")
             rewards_button.click()
